@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int number;
+    int number = 0;
 
     cin >> number;
 
