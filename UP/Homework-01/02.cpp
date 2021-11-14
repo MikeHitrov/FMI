@@ -4,45 +4,81 @@ using namespace std;
 
 int main()
 {
-    char *symbols[] = {
-        "I",  //1
-        "IV", //4
-        "V",  //5
-        "IX", //9
-        "X",  //10
-        "XL", //40
-        "IL", //49
-        "L",  //50
-        "XC", //90
-        "IC", //99
-        "C",  //100
-        "CD", //400
-        "ID", //499
-        "D",  //500
-        "CM", //900
-        "IM", //999
-        "M"}; //1000
-    int values[] = {1, 4, 5, 9, 10, 40, 49, 50, 90, 99, 100, 400, 499, 500, 900, 999, 1000};
+    int arabicNumber = 0;
+    string romanNumber = "";
 
-    int count = sizeof values / sizeof values[0]; //This just gets the number of elements
-    int num = 3834;                               // Some number
+    cin >> arabicNumber;
 
-    count--; //count how the index of the highest value
-    while (num > 0)
+    while (arabicNumber != 0)
     {
-        //if num has a value greater than or equal to the value we are currently looking at
-        //subtract that value from num and display the proper symbol for it
-        if (num >= values[count])
+        if (arabicNumber >= 1000)
         {
-            std::cout << symbols[count];
-            num -= values[count];
+            romanNumber += "M";
+            arabicNumber -= 1000;
         }
-        //if num doesn't have a value greater than or equal to the value we are currently looking at
-        //decrament count we look at a lower value
-        else
-            count--;
+        else if (arabicNumber >= 900)
+        {
+            romanNumber += "CM";
+            arabicNumber -= 900;
+        }
+        else if (arabicNumber >= 500)
+        {
+            romanNumber += "D";
+            arabicNumber -= 500;
+        }
+        else if (arabicNumber >= 400)
+        {
+            romanNumber += "CD";
+            arabicNumber -= 400;
+        }
+        else if (arabicNumber >= 100)
+        {
+            romanNumber += "C";
+            arabicNumber -= 100;
+        }
+        else if (arabicNumber >= 90)
+        {
+            romanNumber += "XC";
+            arabicNumber -= 90;
+        }
+        else if (arabicNumber >= 50)
+        {
+            romanNumber += "L";
+            arabicNumber -= 50;
+        }
+        else if (arabicNumber >= 40)
+        {
+            romanNumber += "XL";
+            arabicNumber -= 40;
+        }
+        else if (arabicNumber >= 10)
+        {
+            romanNumber += "X";
+            arabicNumber -= 10;
+        }
+        else if (arabicNumber >= 9)
+        {
+            romanNumber += "IX";
+            arabicNumber -= 9;
+        }
+        else if (arabicNumber >= 5)
+        {
+            romanNumber += "V";
+            arabicNumber -= 5;
+        }
+        else if (arabicNumber >= 4)
+        {
+            romanNumber += "IV";
+            arabicNumber -= 4;
+        }
+        else if (arabicNumber >= 1)
+        {
+            romanNumber += "I";
+            arabicNumber -= 1;
+        }
     }
 
-    std::cout << endl;
+    cout << arabicNumber << "->" << romanNumber << endl;
+
     return 0;
 }
